@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ms-transaction-service
+  webflux:
+    format:
+      date: iso
+    locale: en_US
+
+server:
+  port: 8092
+
