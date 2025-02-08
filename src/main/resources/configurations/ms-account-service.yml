@@ -14,5 +14,6 @@ account:
       maintenanceFee: 5.0
     fixedterm:
       maxMonthlyMovements: 1
+      availableDayForMovements: 20
     savings:
       maxMonthlyMovements: 5
