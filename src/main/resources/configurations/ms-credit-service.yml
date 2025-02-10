@@ -3,8 +3,8 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: ms-transaction-service
+      database: ms-credit-service
 
 server:
-  port: 8092
+  port: 8093
 
