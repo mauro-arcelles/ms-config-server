@@ -17,3 +17,7 @@ account:
       availableDayForMovements: 20
     savings:
       maxMonthlyMovements: 5
+
+customer:
+  service:
+    baseUrl: http://localhost:8090/api/v1
