@@ -12,3 +12,4 @@ application:
   config:
     account-service-url: http://localhost:8091/api/v1/accounts
     credit-service-url: http://localhost:8093/api/v1/credits
+    customer-service-url: http://localhost:8090/api/v1/customers
