@@ -18,6 +18,6 @@ account:
     savings:
       maxMonthlyMovements: 5
 
-customer:
-  service:
-    baseUrl: http://localhost:8090/api/v1
+application:
+  config:
+    customer-service-url: http://localhost:8090/api/v1/customers
