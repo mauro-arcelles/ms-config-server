@@ -11,3 +11,25 @@ server:
 application:
   config:
     customer-service-url: http://localhost:8090/api/v1/customers
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      customerService:
+        slidingWindowSize: 3
+        failureRateThreshold: 100
+        waitDurationInOpenState: 10000
+  timelimiter:
+    instances:
+      customerService:
+        timeoutDuration: 2s
+        cancelRunningFuture: true
