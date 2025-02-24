@@ -29,10 +29,18 @@ resilience4j:
         slidingWindowSize: 3
         failureRateThreshold: 100
         waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+        ignoreExceptions:
+          - com.project1.ms_account_service.exception.NotFoundException
+          - com.project1.ms_account_service.exception.BadRequestException
       creditService:
         slidingWindowSize: 3
         failureRateThreshold: 100
         waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+        ignoreExceptions:
+          - com.project1.ms_account_service.exception.NotFoundException
+          - com.project1.ms_account_service.exception.BadRequestException
   timelimiter:
     instances:
       customerService:
