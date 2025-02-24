@@ -3,10 +3,44 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: ms-account-service
+      database: ms-bootcamp-arcelles
 
 server:
   port: 8091
+
+application:
+  config:
+    customer-service-url: http://localhost:8090/api/v1/customers
+    credit-service-url: http://localhost:8093/api/v1/credits
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,circuitbreakerevents
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      customerService:
+        slidingWindowSize: 3
+        failureRateThreshold: 100
+        waitDurationInOpenState: 10000
+      creditService:
+        slidingWindowSize: 3
+        failureRateThreshold: 100
+        waitDurationInOpenState: 10000
+  timelimiter:
+    instances:
+      customerService:
+        timeoutDuration: 2s
+        cancelRunningFuture: true
+      creditService:
+        timeoutDuration: 2s
+        cancelRunningFuture: true
 
 account:
   config:
@@ -23,8 +57,3 @@ account:
       maxMonthlyMovements: 30
       maxMonthlyMovementsNoFee: 5
       transactionCommissionFeePercentage: 5
-
-application:
-  config:
-    customer-service-url: http://localhost:8090/api/v1/customers
-    credit-service-url: http://localhost:8093/api/v1/credits

@@ -3,7 +3,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: ms-credit-service
+      database: ms-bootcamp-arcelles
 
 server:
   port: 8093
@@ -16,7 +16,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: health,circuitbreakerevents
   endpoint:
     health:
       show-details: always

@@ -3,7 +3,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: ms-transaction-service
+      database: ms-bootcamp-arcelles
 
 server:
   port: 8092
