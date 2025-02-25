@@ -12,6 +12,20 @@ application:
   config:
     customer-service-url: http://localhost:8090/api/v1/customers
     credit-service-url: http://localhost:8093/api/v1/credits
+    accounts:
+      checking:
+        maintenanceFee: 5
+        maxMonthlyMovementsNoFee: 5
+        transactionCommissionFeePercentage: 5
+      fixedterm:
+        maxMonthlyMovements: 1
+        availableDayForMovements: 20
+        maxMonthlyMovementsNoFee: 5
+        transactionCommissionFeePercentage: 5
+      savings:
+        maxMonthlyMovements: 30
+        maxMonthlyMovementsNoFee: 5
+        transactionCommissionFeePercentage: 5
 
 management:
   endpoints:
@@ -49,19 +63,3 @@ resilience4j:
       creditService:
         timeoutDuration: 2s
         cancelRunningFuture: true
-
-account:
-  config:
-    checking:
-      maintenanceFee: 5
-      maxMonthlyMovementsNoFee: 5
-      transactionCommissionFeePercentage: 5
-    fixedterm:
-      maxMonthlyMovements: 1
-      availableDayForMovements: 20
-      maxMonthlyMovementsNoFee: 5
-      transactionCommissionFeePercentage: 5
-    savings:
-      maxMonthlyMovements: 30
-      maxMonthlyMovementsNoFee: 5
-      transactionCommissionFeePercentage: 5
