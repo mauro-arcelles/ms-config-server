@@ -6,13 +6,13 @@ spring:
       database: ms-bootcamp-arcelles
 
 server:
-  port: 8092
+  port: ${PORT:0}
 
 application:
   config:
-    account-service-url: http://localhost:8091/api/v1/accounts
-    credit-service-url: http://localhost:8093/api/v1/credits
-    customer-service-url: http://localhost:8090/api/v1/customers
+    account-service-url: http://ms-account-service/api/v1/accounts
+    credit-service-url: http://ms-credit-service/api/v1/credits
+    customer-service-url: http://ms-customer-service/api/v1/customers
 
 management:
   endpoints:

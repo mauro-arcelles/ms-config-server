@@ -6,11 +6,11 @@ spring:
       database: ms-bootcamp-arcelles
 
 server:
-  port: 8093
+  port: ${PORT:0}
 
 application:
   config:
-    customer-service-url: http://localhost:8090/api/v1/customers
+    customer-service-url: http://ms-customer-service/api/v1/customers
     credits:
       credit-cards:
         monthlyPaymentDay: 26
