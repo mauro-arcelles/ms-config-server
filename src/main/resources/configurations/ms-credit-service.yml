@@ -11,6 +11,11 @@ server:
 application:
   config:
     customer-service-url: http://localhost:8090/api/v1/customers
+    credits:
+      credit-cards:
+        monthlyPaymentDay: 26
+      credit:
+        monthlyPaymentDay: 20
 
 management:
   endpoints:
