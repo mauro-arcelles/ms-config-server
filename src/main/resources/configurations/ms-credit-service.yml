@@ -42,3 +42,11 @@ resilience4j:
       customerService:
         timeoutDuration: 2s
         cancelRunningFuture: true
+
+springdoc:
+  api-docs:
+    path: /credit-docs/v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+  webjars:
+    prefix:
