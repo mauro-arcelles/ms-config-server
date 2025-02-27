@@ -1,6 +1,10 @@
 server:
   port: 8222
 
+application:
+  config:
+    auth-service-url: http://ms-auth-service/api/v1/auth
+
 spring:
   cloud:
     gateway:
