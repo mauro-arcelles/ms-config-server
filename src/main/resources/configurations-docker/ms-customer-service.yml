@@ -1,0 +1,23 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ms-bootcamp-arcelles
+
+server:
+  port: ${PORT:0}
+
+customer:
+  config:
+    personal:
+      vip:
+        avgDailyMinimumAmount: 100
+
+springdoc:
+  api-docs:
+    path: /customer-docs/v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+  webjars:
+    prefix:

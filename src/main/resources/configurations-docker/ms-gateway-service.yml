@@ -1,0 +1,133 @@
+server:
+  port: 8222
+
+application:
+  config:
+    auth-service-url: http://ms-auth-service/api/v1/auth
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: ms-auth-service
+          uri: lb:http://ms-auth-service
+          predicates:
+            - Path=/api/v1/auth/**
+
+        - id: ms-customer-service
+          uri: lb:http://ms-customer-service
+          predicates:
+            - Path=/api/v1/customers/**
+          filters:
+            - AuthenticationFilter
+
+        - id: ms-account-service
+          uri: lb:http://ms-account-service
+          predicates:
+            - Path=/api/v1/accounts/**
+          filters:
+            - AuthenticationFilter
+
+        - id: ms-credit-service
+          uri: lb:http://ms-credit-service
+          predicates:
+            - Path=/api/v1/credits/**
+          filters:
+            - AuthenticationFilter
+
+        - id: ms-transaction-service
+          uri: lb:http://ms-transaction-service
+          predicates:
+            - Path=/api/v1/transactions/**
+          filters:
+            - AuthenticationFilter
+
+        # customer swagger docs
+        - id: ms-customer-swagger-ui
+          uri: lb:http://ms-customer-service
+          predicates:
+            - Path=/customer-docs/swagger-ui/**
+          filters:
+            - RewritePath=/customer-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-customer-api-docs
+          uri: lb:http://ms-customer-service
+          predicates:
+            - Path=/customer-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/customer-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
+        # account swagger docs
+        - id: ms-account-swagger-ui
+          uri: lb:http://ms-account-service
+          predicates:
+            - Path=/account-docs/swagger-ui/**
+          filters:
+            - RewritePath=/account-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-account-api-docs
+          uri: lb:http://ms-account-service
+          predicates:
+            - Path=/account-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/account-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
+        # credit swagger docs
+        - id: ms-credit-swagger-ui
+          uri: lb:http://ms-credit-service
+          predicates:
+            - Path=/credit-docs/swagger-ui/**
+          filters:
+            - RewritePath=/credit-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-credit-api-docs
+          uri: lb:http://ms-credit-service
+          predicates:
+            - Path=/credit-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/credit-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
+        # transaction swagger docs
+        - id: ms-transaction-swagger-ui
+          uri: lb:http://ms-transaction-service
+          predicates:
+            - Path=/transaction-docs/swagger-ui/**
+          filters:
+            - RewritePath=/transaction-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-transaction-api-docs
+          uri: lb:http://ms-transaction-service
+          predicates:
+            - Path=/transaction-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/transaction-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  webjars:
+    prefix:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: API Gateway Service
+        primaryName: API Gateway Service
+      - url: /customer-docs/v3/api-docs
+        name: Customer Service
+        primaryName: Customer Service
+      - url: /account-docs/v3/api-docs
+        name: Account Service
+        primaryName: Account Service
+      - url: /credit-docs/v3/api-docs
+        name: Credit Service
+        primaryName: Credit Service
+      - url: /transaction-docs/v3/api-docs
+        name: Transaction Service
+        primaryName: Transaction Service

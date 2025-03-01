@@ -1,0 +1,12 @@
+eureka:
+  instance:
+    hostname: ms-discovery-service
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    service-url:
+      defaultZone: http://ms-discovery-service:8761/eureka
+
+spring:
+  cloud:
+    config:
+      override-system-properties: false
