@@ -1,6 +1,6 @@
 eureka:
   instance:
-    hostname: my-discovery-service
+    hostname: ms-discovery-service
   client:
     register-with-eureka: false
     fetch-registry: false
