@@ -1,6 +1,7 @@
 eureka:
   instance:
-    hostname: ms-discovery-service
+    preferIpAddress: true
+    hostname: ${spring.application.name}
     instance-id: ${spring.application.name}:${random.int}
   client:
     service-url:
