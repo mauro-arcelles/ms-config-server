@@ -21,29 +21,29 @@ spring:
           uri: lb:http://ms-customer-service
           predicates:
             - Path=/api/v1/customers/**
-          filters:
-            - AuthenticationFilter
+#          filters:
+#            - AuthenticationFilter
 
         - id: ms-account-service
           uri: lb:http://ms-account-service
           predicates:
             - Path=/api/v1/accounts/**
-          filters:
-            - AuthenticationFilter
+#          filters:
+#            - AuthenticationFilter
 
         - id: ms-credit-service
           uri: lb:http://ms-credit-service
           predicates:
             - Path=/api/v1/credits/**
-          filters:
-            - AuthenticationFilter
+#          filters:
+#            - AuthenticationFilter
 
         - id: ms-transaction-service
           uri: lb:http://ms-transaction-service
           predicates:
             - Path=/api/v1/transactions/**
-          filters:
-            - AuthenticationFilter
+#          filters:
+#            - AuthenticationFilter
 
         # customer swagger docs
         - id: ms-customer-swagger-ui
