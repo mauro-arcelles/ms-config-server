@@ -8,6 +8,12 @@ spring:
 server:
   port: 9090
 
+application:
+  config:
+    kafka:
+      topic-name: wallet-transactions
+      bootstrap-servers: localhost:9092
+
 springdoc:
   api-docs:
     path: /yanki-docs/v3/api-docs
