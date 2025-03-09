@@ -14,7 +14,7 @@ application:
     credit-service-url: http://ms-credit-service/api/v1/credits
     customer-service-url: http://ms-customer-service/api/v1/customers
     kafka:
-      bootstrap-servers: ms-kafka-server:9092
+      bootstrap-servers: ms-kafka:9092
       consumer:
         group-id: wallet-transaction-consumer
       topic-name: wallet-transactions

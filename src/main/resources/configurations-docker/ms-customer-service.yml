@@ -4,6 +4,9 @@ spring:
       host: ms-mongodb
       port: 27017
       database: ms-bootcamp-arcelles
+  redis:
+    host: ms-redis
+    port: 6379
 
 server:
   port: ${PORT:0}

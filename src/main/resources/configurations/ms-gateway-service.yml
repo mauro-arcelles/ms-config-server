@@ -45,6 +45,13 @@ spring:
 #          filters:
 #            - AuthenticationFilter
 
+        - id: ms-yanki-service
+          uri: lb:http://ms-yanki-service
+          predicates:
+            - Path=/api/v1/wallets/**
+          filters:
+            - AuthenticationFilter
+
         # customer swagger docs
         - id: ms-customer-swagger-ui
           uri: lb:http://ms-customer-service
@@ -105,6 +112,21 @@ spring:
           filters:
             - RewritePath=/transaction-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
 
+        # yanki swagger docs
+        - id: ms-yanki-swagger-ui
+          uri: lb:http://ms-yanki-service
+          predicates:
+            - Path=/yanki-docs/swagger-ui/**
+          filters:
+            - RewritePath=/yanki-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-yanki-api-docs
+          uri: lb:http://ms-yanki-service
+          predicates:
+            - Path=/yanki-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/yanki-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
 springdoc:
   enable-native-support: true
   api-docs:
@@ -131,3 +153,6 @@ springdoc:
       - url: /transaction-docs/v3/api-docs
         name: Transaction Service
         primaryName: Transaction Service
+      - url: /yanki-docs/v3/api-docs
+        name: Yanki Service
+        primaryName: Yanki Service

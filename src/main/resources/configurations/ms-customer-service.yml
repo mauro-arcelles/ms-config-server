@@ -4,6 +4,9 @@ spring:
       host: localhost
       port: 27017
       database: ms-bootcamp-arcelles
+  redis:
+    host: localhost
+    port: 6379
 
 server:
   port: ${PORT:0}

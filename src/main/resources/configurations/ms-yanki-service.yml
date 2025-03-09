@@ -6,7 +6,7 @@ spring:
       database: ms-bootcamp-arcelles
 
 server:
-  port: 9090
+  port: ${PORT:0}
 
 application:
   config:

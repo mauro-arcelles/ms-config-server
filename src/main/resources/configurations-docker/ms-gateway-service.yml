@@ -45,6 +45,13 @@ spring:
 #          filters:
 #            - AuthenticationFilter
 
+        - id: ms-yanki-service
+          uri: lb:http://ms-yanki-service
+          predicates:
+            - Path=/api/v1/wallets/**
+          filters:
+            - AuthenticationFilter
+
         # customer swagger docs
         - id: ms-customer-swagger-ui
           uri: lb:http://ms-customer-service

@@ -1,11 +1,10 @@
 eureka:
   instance:
-    preferIpAddress: true
     hostname: ${spring.application.name}
     instance-id: ${spring.application.name}:${random.int}
   client:
     service-url:
-      defaultZone: http://ms-discovery-service:8761/eureka
+      defaultZone: http://ms-discovery-service:8761/eureka/
 
 spring:
   cloud:

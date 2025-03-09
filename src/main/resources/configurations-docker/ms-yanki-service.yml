@@ -6,13 +6,13 @@ spring:
       database: ms-bootcamp-arcelles
 
 server:
-  port: 9090
+  port: ${PORT:0}
 
 application:
   config:
     kafka:
       topic-name: wallet-transactions
-      bootstrap-servers: ms-kafka-server:9092
+      bootstrap-servers: ms-kafka:9092
 
 springdoc:
   api-docs:
