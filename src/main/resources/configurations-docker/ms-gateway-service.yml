@@ -52,6 +52,21 @@ spring:
           filters:
             - AuthenticationFilter
 
+        # auth swagger docs
+        - id: ms-auth-swagger-ui
+          uri: lb:http://ms-auth-service
+          predicates:
+            - Path=/auth-docs/swagger-ui/**
+          filters:
+            - RewritePath=/auth-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-auth-api-docs
+          uri: lb:http://ms-auth-service
+          predicates:
+            - Path=/auth-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/auth-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
         # customer swagger docs
         - id: ms-customer-swagger-ui
           uri: lb:http://ms-customer-service
@@ -112,6 +127,21 @@ spring:
           filters:
             - RewritePath=/transaction-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
 
+        # yanki swagger docs
+        - id: ms-yanki-swagger-ui
+          uri: lb:http://ms-yanki-service
+          predicates:
+            - Path=/yanki-docs/swagger-ui/**
+          filters:
+            - RewritePath=/yanki-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-yanki-api-docs
+          uri: lb:http://ms-yanki-service
+          predicates:
+            - Path=/yanki-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/yanki-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
 springdoc:
   enable-native-support: true
   api-docs:
@@ -123,6 +153,9 @@ springdoc:
     path: /swagger-ui.html
     config-url: /v3/api-docs/swagger-config
     urls:
+      - url: /auth-docs/v3/api-docs
+        name: Auth Service
+        primaryName: Auth Service
       - url: /v3/api-docs
         name: API Gateway Service
         primaryName: API Gateway Service
@@ -138,3 +171,6 @@ springdoc:
       - url: /transaction-docs/v3/api-docs
         name: Transaction Service
         primaryName: Transaction Service
+      - url: /yanki-docs/v3/api-docs
+        name: Yanki Service
+        primaryName: Yanki Service
