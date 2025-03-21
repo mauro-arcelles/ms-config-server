@@ -21,29 +21,29 @@ spring:
           uri: lb:http://ms-customer-service
           predicates:
             - Path=/api/v1/customers/**
-#          filters:
-#            - AuthenticationFilter
+        #          filters:
+        #            - AuthenticationFilter
 
         - id: ms-account-service
           uri: lb:http://ms-account-service
           predicates:
             - Path=/api/v1/accounts/**
-#          filters:
-#            - AuthenticationFilter
+        #          filters:
+        #            - AuthenticationFilter
 
         - id: ms-credit-service
           uri: lb:http://ms-credit-service
           predicates:
             - Path=/api/v1/credits/**
-#          filters:
-#            - AuthenticationFilter
+        #          filters:
+        #            - AuthenticationFilter
 
         - id: ms-transaction-service
           uri: lb:http://ms-transaction-service
           predicates:
             - Path=/api/v1/transactions/**
-#          filters:
-#            - AuthenticationFilter
+        #          filters:
+        #            - AuthenticationFilter
 
         - id: ms-yanki-service
           uri: lb:http://ms-yanki-service
@@ -142,6 +142,21 @@ spring:
           filters:
             - RewritePath=/yanki-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
 
+        # bootcoin swagger docs
+        - id: ms-bootcoin-swagger-ui
+          uri: lb:http://ms-bootcoin-service
+          predicates:
+            - Path=/bootcoin-docs/swagger-ui/**
+          filters:
+            - RewritePath=/bootcoin-docs/swagger-ui/(?<segment>.*), /swagger-ui/$\{segment}
+
+        - id: ms-bootcoin-api-docs
+          uri: lb:http://ms-bootcoin-service
+          predicates:
+            - Path=/bootcoin-docs/v3/api-docs/**
+          filters:
+            - RewritePath=/bootcoin-docs/v3/api-docs/(?<segment>.*), /v3/api-docs/$\{segment}
+
 springdoc:
   enable-native-support: true
   api-docs:
@@ -174,3 +189,6 @@ springdoc:
       - url: /yanki-docs/v3/api-docs
         name: Yanki Service
         primaryName: Yanki Service
+      - url: /bootcoin-docs/v3/api-docs
+        name: Bootcoin Service
+        primaryName: Bootcoin Service
