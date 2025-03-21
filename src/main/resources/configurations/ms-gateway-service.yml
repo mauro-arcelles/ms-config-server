@@ -52,6 +52,13 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: ms-bootcoin-service
+          uri: lb:http://ms-bootcoin-service
+          predicates:
+            - Path=/api/v1/bootcoin/**
+          filters:
+            - AuthenticationFilter
+
         # auth swagger docs
         - id: ms-auth-swagger-ui
           uri: lb:http://ms-auth-service
