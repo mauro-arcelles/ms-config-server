@@ -16,7 +16,7 @@ application:
     bootcoin-service-url: http://ms-bootcoin-service/api/v1/bootcoin
     yanki-service-url: http://ms-yanki-service/api/v1/yanki
     kafka:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: ms-kafka:9092
       topic1:
         topic-name: wallet-transactions
         consumer:
