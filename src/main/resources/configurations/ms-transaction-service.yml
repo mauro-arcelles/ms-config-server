@@ -13,11 +13,17 @@ application:
     account-service-url: http://ms-account-service/api/v1/accounts
     credit-service-url: http://ms-credit-service/api/v1/credits
     customer-service-url: http://ms-customer-service/api/v1/customers
+    bootcoin-service-url: http://ms-bootcoin-service/api/v1/bootcoin
     kafka:
       bootstrap-servers: localhost:9092
-      consumer:
-        group-id: wallet-transaction-consumer
-      topic-name: wallet-transactions
+      topic1:
+        topic-name: wallet-transactions
+        consumer:
+          group-id: wallet-transaction-consumer
+      topic2:
+        topic-name: bootcoin-transactions
+        consumer:
+          group-id: bootcoin-transactions-consumer
 
 management:
   endpoints:
@@ -55,6 +61,14 @@ resilience4j:
         ignoreExceptions:
           - com.project1.ms_transaction_service.exception.NotFoundException
           - com.project1.ms_transaction_service.exception.BadRequestException
+      bootcoinService:
+        slidingWindowSize: 3
+        failureRateThreshold: 100
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+        ignoreExceptions:
+          - com.project1.ms_transaction_service.exception.NotFoundException
+          - com.project1.ms_transaction_service.exception.BadRequestException
   timelimiter:
     instances:
       customerService:
@@ -64,6 +78,9 @@ resilience4j:
         timeoutDuration: 2s
         cancelRunningFuture: true
       accountService:
+        timeoutDuration: 2s
+        cancelRunningFuture: true
+      bootcoinService:
         timeoutDuration: 2s
         cancelRunningFuture: true
 

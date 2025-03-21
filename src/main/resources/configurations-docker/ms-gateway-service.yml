@@ -48,7 +48,7 @@ spring:
         - id: ms-yanki-service
           uri: lb:http://ms-yanki-service
           predicates:
-            - Path=/api/v1/wallets/**
+            - Path=/api/v1/yanki/**
           filters:
             - AuthenticationFilter
 
