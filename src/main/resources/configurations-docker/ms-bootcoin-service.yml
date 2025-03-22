@@ -11,7 +11,7 @@ server:
 application:
   config:
     jwt:
-      secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+      secret: 5367566B59467373367639792F423F4528482B4D6251655468576D5A77647437
     kafka:
       topic-name: bootcoin-transactions
       bootstrap-servers: ms-kafka:9092
